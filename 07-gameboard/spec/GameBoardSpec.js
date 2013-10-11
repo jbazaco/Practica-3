@@ -142,7 +142,11 @@ describe("GameBoard", function() {
 	it("Gameboard.step()", function() {
 		gb.iterate = function(){};
 		spyOn(gb, "iterate");
+		spyOn(gb, "resetRemoved");
+		spyOn(gb, "finalizeRemoved");
 		gb.step(5);
 		expect(gb.iterate).toHaveBeenCalledWith("step", 5);
+		expect(gb.resetRemoved).toHaveBeenCalledWith();
+		expect(gb.finalizeRemoved).toHaveBeenCalledWith();
 	});
 });

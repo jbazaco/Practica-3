@@ -144,6 +144,5 @@ describe("GameBoard", function() {
 		spyOn(gb, "iterate");
 		gb.step(5);
 		expect(gb.iterate).toHaveBeenCalledWith("step", 5);
-		
 	});
 });
