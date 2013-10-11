@@ -85,6 +85,15 @@ describe("GameBoard", function() {
 		gb.removed = [{}, {}];
 		gb.resetRemoved();
 		expect(gb.removed.length).toBe(0);
+
+		//remove()
+		var objs = [{}, {}, {}];
+		for (var i = 0; i<objs.length; i++) {
+			gb.remove(objs[i]);
+			expect(gb.removed.length).toBe(i+1);
+			expect(objs[i]).toBe(gb.removed[i]);
+		}
+		
 	});
 
 });
