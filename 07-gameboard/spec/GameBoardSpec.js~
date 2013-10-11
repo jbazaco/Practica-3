@@ -80,4 +80,11 @@ describe("GameBoard", function() {
 		expect(gb.objects.length).toBe(2);
 	});
 
+	it("Gameboard remove functions", function() {
+		//restRemoved()
+		gb.removed = [{}, {}];
+		gb.resetRemoved();
+		expect(gb.removed.length).toBe(0);
+	});
+
 });
