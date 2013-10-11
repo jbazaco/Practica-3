@@ -139,4 +139,10 @@ describe("GameBoard", function() {
 		
 	});
 
+	it("Gameboard.step()", function() {
+		gb.iterate = function(){};
+		spyOn(gb, "iterate");
+		gb.step(5);
+		expect(gb.iterate).toHaveBeenCalledWith("step", 5);
+	});
 });
