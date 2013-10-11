@@ -166,4 +166,14 @@ describe("GameBoard", function() {
 		expect(gb.overlap(obj1, {x: 1, y:-2, h:20, w:20})).toBe(true);
 
 	});
+
+	it("Gameboard.collide()", function() {
+		gb.objects = [{type: "1", x:20, y:20, h:1, w:1}, 
+						{type: "2", x:20, y:20, h:3, w:3},
+						{type: "2", x:1, y:1, h:3, w:3},
+						{type: "2", x:2, y:2, h:3, w:3}];
+		var obj = {x:0, y:0, h:3, w:3};
+		expect(gb.collide(obj,"1")).toBe(false);
+		expect(gb.collide(obj,"2")).toBe(gb.objects[2]);
+	});
 });
