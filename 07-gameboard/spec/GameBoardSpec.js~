@@ -129,4 +129,14 @@ describe("GameBoard", function() {
 
 	});
 
+	it("Gameboard.detect()", function() {
+		gb.objects = [{p1: "a"}, {p1: "b"}, {p1: "b"}];
+		var f = function() {
+			return this.p1 == "b";		
+		};
+
+		expect(gb.detect(f)).toBe(gb.objects[1]);
+		
+	});
+
 });
