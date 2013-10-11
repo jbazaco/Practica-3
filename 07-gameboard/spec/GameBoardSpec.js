@@ -113,4 +113,20 @@ describe("GameBoard", function() {
 		
 	});
 
+	it("Gameboard.iterate()", function() {
+		gb.objects = [{f1: function(){}, f2: function(){}}, 
+					{f1:function(){}, f2:function(){}}];
+		spyOn(gb.objects[0], "f1");
+		spyOn(gb.objects[0], "f2");
+		spyOn(gb.objects[1], "f1");
+		spyOn(gb.objects[1], "f2");
+
+		gb.iterate("f1", "a", "b");
+		expect(gb.objects[0].f1).toHaveBeenCalledWith("a", "b");
+		expect(gb.objects[0].f2).not.toHaveBeenCalled();
+		expect(gb.objects[1].f1).toHaveBeenCalledWith("a", "b");
+		expect(gb.objects[1].f2).not.toHaveBeenCalled();
+
+	});
+
 });
