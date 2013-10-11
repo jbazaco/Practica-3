@@ -87,12 +87,29 @@ describe("GameBoard", function() {
 		expect(gb.removed.length).toBe(0);
 
 		//remove()
-		var objs = [{}, {}, {}];
+		var objs = [{}, {}, {}, {}];
 		for (var i = 0; i<objs.length; i++) {
 			gb.remove(objs[i]);
 			expect(gb.removed.length).toBe(i+1);
 			expect(objs[i]).toBe(gb.removed[i]);
 		}
+
+		//finalizeRemoved()
+		for (var i = 0; i<objs.length; i++) {
+			gb.add(objs[i]);
+		}
+		gb.resetRemoved();
+		gb.remove(objs[0]);
+		gb.remove(objs[2]);
+		gb.finalizeRemoved();
+		expect(gb.objects.length).toBe(objs.length-2);
+		expect(gb.objects.indexOf(objs[0])).toBe(-1);
+		expect(gb.objects.indexOf(objs[1])).toBe(0);
+		expect(gb.objects.indexOf(objs[2])).toBe(-1);
+		
+		gb.removed = objs;
+		gb.finalizeRemoved();
+		expect(gb.objects.length).toBe(0);
 		
 	});
 
