@@ -213,7 +213,10 @@ var GameBoard = function() {
 
     // Devuelve el primer objeto de objects para el que func es true
     this.detect = function(func) {
-	return _(this.objects).find( function(obj) { return func.call(obj) }) || false;
+	for(var i = 0,val=null, len=this.objects.length; i < len; i++) {
+	    if(func.call(this.objects[i])) return this.objects[i];
+	}
+	return false;
     };
 
     // Cuando Game.loop() llame a step(), hay que llamar al método
@@ -242,7 +245,7 @@ var GameBoard = function() {
     };
 
     // Encontrar el primer objeto de tipo type que colisiona con obj
-    // Si se llama sin type, encontrar el primer objeto de cualquier
+    // Si se llama sin type, en contrar el primer objeto de cualquier
     // tipo que colisiona con obj
     this.collide = function(obj,type) {
 	return this.detect(function() {
@@ -255,5 +258,6 @@ var GameBoard = function() {
 
 
 };
+
 
 
