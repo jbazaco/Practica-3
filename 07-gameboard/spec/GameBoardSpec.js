@@ -149,4 +149,11 @@ describe("GameBoard", function() {
 		expect(gb.resetRemoved).toHaveBeenCalledWith();
 		expect(gb.finalizeRemoved).toHaveBeenCalledWith();
 	});
+
+	it("Gameboard.draw()", function() {
+		gb.iterate = function(){};
+		spyOn(gb, "iterate");
+		gb.draw("ctx");
+		expect(gb.iterate).toHaveBeenCalledWith("draw", "ctx");
+	});
 });
