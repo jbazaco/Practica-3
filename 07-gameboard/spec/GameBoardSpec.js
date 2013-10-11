@@ -156,4 +156,14 @@ describe("GameBoard", function() {
 		gb.draw("ctx");
 		expect(gb.iterate).toHaveBeenCalledWith("draw", "ctx");
 	});
+
+	it("Gameboard.overlap()", function(){
+		var obj1 = {x: 0, y:0, h:3, w:3};
+		expect(gb.overlap(obj1, obj1)).toBe(true);
+		expect(gb.overlap(obj1, {x:1, y:1, h:3, w:3})).toBe(true);
+		expect(gb.overlap(obj1, {x:10, y:20, h:3, w:3})).toBe(false);
+		expect(gb.overlap(obj1, {x:-1, y:-1, h:2, w:3})).toBe(true);
+		expect(gb.overlap(obj1, {x: 1, y:-2, h:20, w:20})).toBe(true);
+
+	});
 });
