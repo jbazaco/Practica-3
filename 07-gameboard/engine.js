@@ -8,7 +8,7 @@
 // (jugador, enemigo, proyectiles, y los elementos como el marcador de
 // puntuación o el número de vidas.
 
-
+var _;
 
 
 // Objeto singleton Game: se guarda una unica instancia del
@@ -208,11 +208,7 @@ var GameBoard = function() {
     this.iterate = function(funcName) {
 	// Convertimos en un array args (1..)
 	var args = Array.prototype.slice.call(arguments,1);
-
-	for(var i=0, len=this.objects.length; i<len;i++) {
-	    var obj = this.objects[i];
-	    obj[funcName].apply(obj,args)
-	}
+	_(this.objects).each( function(obj) { obj[funcName].apply(obj,args) };
     };
 
     // Devuelve el primer objeto de objects para el que func es true
