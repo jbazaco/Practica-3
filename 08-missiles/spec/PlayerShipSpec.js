@@ -108,6 +108,26 @@ describe("Clase PlayerShip", function(){
 
     });
 
+    it("PlayerShip.newShoot()", function() {
+	var miNave = new PlayerShip();
+	//No pulsada y sin pulsar
+	Game = {keys: {'fire': false}};
+	miNave.pressed = false;
+	expect(miNave.newShoot()).toBe(false);
+	expect(miNave.pressed).toBe(false);
+
+	//No pulsada y pulsamos
+	Game = {keys: {'fire': true}};
+	miNave.pressed = false;
+	expect(miNave.newShoot()).toBe(true);
+	expect(miNave.pressed).toBe(true);
+
+	//Pulsada y pulsamos
+	Game = {keys: {'fire': true}};
+	miNave.pressed = true;
+	expect(miNave.newShoot()).toBe(false);
+	expect(miNave.pressed).toBe(true);
+    });
 
 
 });
