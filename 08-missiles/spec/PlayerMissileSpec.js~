@@ -41,9 +41,18 @@ describe("PlayerMissile", function() {
 
 	it("Playermissile.step()", function() {
 		var pm = new PlayerMissile(1,1000);
+		var dummyBoard = { remove: function(obj) {} };
+		pm.board = dummyBoard;
+		spyOn(dummyBoard, "remove");
+	
+		//sin salirse de la pantalla
 		pm.step(0.2);
 		expect(pm.y).toBe(1000 - pm.h + pm.vy*0.2);
+		expect(dummyBoard.remove).not.toHaveBeenCalled();
 
+		//saliendose de la pantalla
+		pm.step(10000);
+		expect(dummyBoard.remove).toHaveBeenCalledWith(pm);
 	});
 	
 
