@@ -61,7 +61,7 @@ describe("PlayerMissile", function() {
 		octx = {};
 		spyOn(SpriteSheet, "draw");
 		pm.draw(octx);
-		expect(SpriteSheet.draw).toHaveBeenCalledWith(octx,'misile', pm.x, pm.y);
+		expect(SpriteSheet.draw).toHaveBeenCalledWith(octx,'missile', pm.x, pm.y);
 	});
 
 });

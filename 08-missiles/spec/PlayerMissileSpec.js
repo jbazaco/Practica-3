@@ -37,6 +37,7 @@ describe("PlayerMissile", function() {
 		expect(pm.h).toBe(SpriteSheet.map['missile'].h);
 		expect(pm.x).toBe(1 - SpriteSheet.map['missile'].w/2);
 		expect(pm.y).toBe(2 - SpriteSheet.map['missile'].h);
+		//No compruebo pm.vy suponiendo que se puede querer modificar la velocidad
 	});
 
 	it("PlayerMissile.step()", function() {
