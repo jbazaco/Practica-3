@@ -39,7 +39,7 @@ describe("PlayerMissile", function() {
 		expect(pm.y).toBe(2 - SpriteSheet.map['missile'].h);
 	});
 
-	it("Playermissile.step()", function() {
+	it("PlayerMissile.step()", function() {
 		var pm = new PlayerMissile(1,1000);
 		var dummyBoard = { remove: function(obj) {} };
 		pm.board = dummyBoard;
@@ -55,5 +55,13 @@ describe("PlayerMissile", function() {
 		expect(dummyBoard.remove).toHaveBeenCalledWith(pm);
 	});
 	
+	it("PlayerMissile.draw()", function() {
+		var pm = new PlayerMissile(1,2);
+		SpriteSheet = { draw: function(ctx, name, x, y) {} };
+		octx = {};
+		spyOn(SpriteSheet, "draw");
+		pm.draw(octx);
+		expect(SpriteSheet.draw).toHaveBeenCalledWith(octx,'missile', pm.x, pm.y);
+	});
 
 });
