@@ -31,13 +31,19 @@
 describe("PlayerMissile", function() {
 
 	it("PlayerMissile", function() {
-		waits(100);
 		SpriteSheet.map = {missile: {h:10, w:2} };
 		var pm = new PlayerMissile(1,2);
 		expect(pm.w).toBe(SpriteSheet.map['missile'].w);
 		expect(pm.h).toBe(SpriteSheet.map['missile'].h);
 		expect(pm.x).toBe(1 - SpriteSheet.map['missile'].w/2);
 		expect(pm.y).toBe(2 - SpriteSheet.map['missile'].h);
+	});
+
+	it("Playermissile.step()", function() {
+		var pm = new PlayerMissile(1,1000);
+		pm.step(0.2);
+		expect(pm.y).toBe(1000 - pm.h + pm.vy*0.2);
+
 	});
 	
 
