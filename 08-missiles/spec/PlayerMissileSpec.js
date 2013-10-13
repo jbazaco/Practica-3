@@ -30,6 +30,18 @@
 
 describe("PlayerMissile", function() {
 
+	var canvas, ctx;
+
+	beforeEach(function(){
+		loadFixtures('index.html');
+
+		canvas = $('#game')[0];
+		expect(canvas).toExist();
+
+		ctx = canvas.getContext('2d');
+		expect(ctx).toBeDefined();
+	});
+
 	it("PlayerMissile", function() {
 		SpriteSheet.map = {missile: {h:10, w:2} };
 		var pm = new PlayerMissile(1,2);

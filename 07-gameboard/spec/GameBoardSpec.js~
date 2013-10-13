@@ -60,8 +60,16 @@
 describe("GameBoard", function() {
 
 	var gb;
+	var canvas, ctx;
 
 	beforeEach(function(){
+		loadFixtures('index.html');
+
+		canvas = $('#game')[0];
+		expect(canvas).toExist();
+
+		ctx = canvas.getContext('2d');
+		expect(ctx).toBeDefined();
 		gb = new GameBoard();
 	});
 
